@@ -28,16 +28,17 @@ let initialTasks = [
 function GetTask(initialTasks) {
 
   // Prompt user for the number of tasks they must add.
-  let taskCount; 
-  do {
-    taskCount = parseInt(prompt("How many Tasks would you like to add today (Must be beween 1 and 3)?"));
-    if (isNaN(taskCount)) {
-      alert("Please enter a valid number beween 1 and 3!");
-    }
-    else if (taskCount < 1 || taskCount > 3) {
-      alert("The value entered is not between 1 and 3! Ensure your value is valid number beween 1 and 3!");
-    }
-  } while (isNaN(taskCount) || taskCount < 1 || taskCount > 3 );
+  // No longer prompting. setting a limit of 3
+  let taskCount = 3; 
+  // do {
+  //   taskCount = parseInt(prompt("How many Tasks would you like to add today (Must be beween 1 and 3)?"));
+  //   if (isNaN(taskCount)) {
+  //     alert("Please enter a valid number beween 1 and 3!");
+  //   }
+  //   else if (taskCount < 1 || taskCount > 3) {
+  //     alert("The value entered is not between 1 and 3! Ensure your value is valid number beween 1 and 3!");
+  //   }
+  // } while (isNaN(taskCount) || taskCount < 1 || taskCount > 3 );
 
   for (let i = 1; i <= taskCount ; i++) {
 
@@ -91,6 +92,12 @@ function GetTask(initialTasks) {
 }
 
 // Call the function and 
+console.log("All tasks:");
 initialTasks = GetTask(initialTasks);
-
 console.log(initialTasks);
+
+// Logging Completed tasks
+const completedCount = initialTasks.filter(initialTasks => initialTasks.status === "done").length;
+const completedTasks = initialTasks.filter(initialTasks => initialTasks.status === "done")
+console.log(`Completed tasks: ${completedCount}`);
+console.log(completedTasks);
