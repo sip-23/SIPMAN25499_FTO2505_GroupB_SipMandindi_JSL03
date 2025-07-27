@@ -81,7 +81,7 @@ function GetTask(initialTasks) {
   }
 
   // Alert when when the loop has ended 
-  alert(`Tasks saved! You have logged ${taskCount} tasks. There are now ${initialTasks.length}. Check the console for details`);
+  alert(`Tasks saved! You have logged ${taskCount} tasks. There are now ${initialTasks.length} task. Check the console for details`);
 
   // Implement user stroy P2.25
   if (initialTasks.length >= 6) {
@@ -91,13 +91,16 @@ function GetTask(initialTasks) {
   return initialTasks;
 }
 
-// Call the function and 
-console.log("All tasks:");
-initialTasks = GetTask(initialTasks);
-console.log(initialTasks);
+// Implement P2.26 A function that filters
+function filterCompleteTasks(initialTasks) {
+  // Logging Completed tasks
+  const completedCount = initialTasks.filter(initialTasks => initialTasks.status === "done").length;
+  const completedTasks = initialTasks.filter(initialTasks => initialTasks.status === "done");
+  console.log("Completed tasks:", completedCount, completedTasks);
+}
 
-// Logging Completed tasks
-const completedCount = initialTasks.filter(initialTasks => initialTasks.status === "done").length;
-const completedTasks = initialTasks.filter(initialTasks => initialTasks.status === "done")
-console.log(`Completed tasks: ${completedCount}`);
-console.log(completedTasks);
+// Main function Call 
+initialTasks = GetTask(initialTasks);
+console.log("All tasks:", initialTasks);
+
+filterCompleteTasks(initialTasks);
